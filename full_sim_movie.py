@@ -86,7 +86,7 @@ this is where it all comes together
 """
 
 ts = yt.DatasetSeries(snapshot_data_path)
-steps = int(310/len(ts)) #this is to create enough frame for ~30fps to make a decent movie.
+steps = int(310/len(ts)) #this is to create enough frames for ~30fps to make a decent movie.
 ###############################################################################################
 for fn in ts.outputs:
     ds = yt.load(fn)
