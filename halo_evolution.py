@@ -217,6 +217,7 @@ for fn in ts.outputs:
     ds = yt.load(fn)
     if frame == 0:
         #initial conditions are implimented here
+        #halo will be placed in a spherical region centered on the halo position with radius 100xframe_width to create a clearer image.
         sp = ds.sphere(focus_points[0], 100*frame_widths[0])
         initial_pos = initial_camera_position(sp,ds,focus_points[0])
         cam, sc = setup_cam(sp, field, lens, resolution=res, orientation=Orientation, frame_width=(width*sp.radius), focus_point=sp.center, position=initial_pos)
