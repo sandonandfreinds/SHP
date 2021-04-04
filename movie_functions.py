@@ -9,7 +9,8 @@ setup_cam: returns yt objects 'camera' and 'scene' .
 The compulsory arguments are 'obj', 'field' and 'lens'. 
 'obj' is the data source for the volume rendering (normally obj = ds=yt.load(...)).
 'field' is the field in the data source the user would like to visualise. i.e. density, mass, temperature etc.
-'lens' is a keyword argument that requires one of the lens type keyords from yt: "plane-parallel", "perspective","stereo-perspective","fisheye","spherical","stereo-spherical".
+'lens' is a keyword argument that requires one of the lens type keyords from yt: "plane-parallel", "perspective","stereo-perspective","fisheye","spherical",
+"stereo-spherical".
 """
 def setup_cam(obj, field, lens, resolution=None, orientation=None, frame_width=None, focus_point=None, position=None):
     scene = yt.create_scene(obj, field, lens_type=lens)
