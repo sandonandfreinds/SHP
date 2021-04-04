@@ -2,6 +2,14 @@
 Documentation of the functions created to make images and movies.
 """
 #######################################################################################################
+import yt  #created by Britton Smith and Megan Lang, https://doi.org/10.21105/joss.01881
+import ytree
+import math
+import gc
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import interpolate
+#######################################################################################################
 """
 setup_cam: returns yt objects 'camera' and 'scene' .
 'scene' is the volume rendered by yt. 
