@@ -1,4 +1,4 @@
-import yt
+import yt  #created by Britton Smith and Megan Lang, https://doi.org/10.21105/joss.01881
 import ytree
 import math
 import gc
