@@ -22,7 +22,8 @@ frame = 0 # frame counter
 ########################## User defined values #####################
 """
 Field = ('grid', 'nbody_mass') #user defined field 
-Lens = 'perspective' #lens type for volume rendering using yt keywords: "plane-parallel", "perspective","stereo-perspective","fisheye","spherical","stereo-spherical"
+Lens = 'perspective' 
+#lens type for volume rendering using yt keywords: "plane-parallel", "perspective","stereo-perspective","fisheye","spherical","stereo-spherical"
 Resolution = (2048,2048) #camera resolution (pixels)
 
 snapshot_data_path = "/disk12/brs/legacy/GVD_C700_l100n2048_SLEGAC/dm_gadget/covering_grids/snapshot_*_covering_grid.h5"
