@@ -2,8 +2,8 @@
 Documentation of the functions created to make images and movies.
 """
 #######################################################################################################
-import yt  #created by Britton Smith and Megan Lang, https://doi.org/10.21105/joss.01881
-import ytree
+import yt  
+import ytree #created by Britton Smith and Megan Lang, https://doi.org/10.21105/joss.01881
 import math
 import gc
 import numpy as np
