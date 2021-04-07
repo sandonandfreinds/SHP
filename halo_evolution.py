@@ -61,8 +61,8 @@ for i in range(3):
      halo_pos=np.append(halo_pos, ei, axis=1)
 
 
-def take_image(sc, image):
-    source = sc[0]
+def take_image(scene, image):
+    source = scene[0]
     source.tfh.set_bounds()
     source.tfh.set_log(True)
     sc.save(export_path+"frame_%04d.png" %image, sigma_clip=2)
