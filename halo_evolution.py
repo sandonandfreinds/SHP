@@ -65,7 +65,7 @@ def take_image(scene, image):
     source = scene[0]
     source.tfh.set_bounds()
     source.tfh.set_log(True)
-    sc.save(export_path+"frame_%04d.png" %image, sigma_clip=2)
+    scene.save(export_path+"frame_%04d.png" %image, sigma_clip=2)
     image += 1
     return image
 
