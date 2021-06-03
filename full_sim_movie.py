@@ -94,7 +94,7 @@ for fn in ts.outputs:
     if frame == 0:
         pos = ds.arr(inital_position, "unitary")
         focus = ds.arr(Focus_point, "unitary")
-        cam, sc = setup_cam(ds, Field, Lens, resolution=Resolution, oreintation=Orientation, frame_width=Width, focus_point=focus, position=pos)
+        cam, sc = setup_cam(ds, Field, Lens, resolution=Resolution, orientation=Orientation, frame_width=Width, focus_point=focus, position=pos)
         Orientation = cam.north_vector
         
     #camera will rotate through a fraction of the evolution angle for each snapshot
