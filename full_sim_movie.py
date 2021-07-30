@@ -33,6 +33,7 @@ export_path = "/home/awood/full_sim_movie"
 #all array-like arguments must be unitary.
 Orientation = None #can be set to x,y,z or some more funky np.array
 Width = None #default is just domain width
+Mass_cutoff = None #multiple of mean mass in cell for a given frame i.e. 0.5*mean_mass, helps clear up images.
 Focus_point = [0.5,0.5,0.5] #focus point of camera, default is the domain center
 inital_position = [0,0.5,0.5] #inital position of camera. 
 
@@ -43,14 +44,18 @@ z0_angle = (2*np.pi)/4 # if user wants to see rotation at z=0 to observe final s
 ##################################################################
 """
 
-def take_image(sc, image):
+def take_image(sc, image, bounds=None):
     global export_path
     source = sc[0]
-    source.tfh.set_bounds()
+    if bounds is None:
+        source.tfh.set_bounds()
+    else:
+        source.tfh.set_bounds(bounds)
     source.tfh.set_log(True)
+    source.tfh.grey_opacity = False
     sc.save(export_path+"/frame_%04d.png" %image, sigma_clip=2)
     image += 1
-    return image 
+    return image
 
 def setup_cam(obj, field, lens, resolution=None, orientation=None, frame_width=None, focus_point=None, position=None):
     scene = yt.create_scene(obj, field, lens_type=lens)
@@ -90,6 +95,13 @@ steps = int(310/len(ts)) #this is to create enough frames for ~30fps to make a d
 ###############################################################################################
 for fn in ts.outputs:
     ds = yt.load(fn)
+    
+    if Mass_cutoff != None:
+        mass = ds.r[('grid', 'nbody_mass')]
+        mean_mass = mass.mean()
+        maximum_mass = mass.max()
+        Bounds = (Mass_cutoff*mean_mass, maximum_mass)
+    
     #inital conditions are implimented here    
     if frame == 0:
         pos = ds.arr(inital_position, "unitary")
