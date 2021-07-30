@@ -53,14 +53,18 @@ def setup_cam(obj, field, lens, resolution=None, orientation=None, frame_width=N
 take_image: produces an image of a 'scene' created by setup_cam() and exports it as a .png file to a user specified location.
 'image' is an integer counter to keep track of images made. 
 """
-def take_image(scene, image):
+def take_image(sc, image, bounds=None):
     global export_path
-    source = scene[0]
-    source.tfh.set_bounds()
+    source = sc[0]
+    if bounds is None:
+        source.tfh.set_bounds()
+    else:
+        source.tfh.set_bounds(bounds)
     source.tfh.set_log(True)
-    scene.save(export_path+"/frame_%04d.png" %image, sigma_clip=2)
+    source.tfh.grey_opacity = False
+    sc.save(export_path+"/frame_%04d.png" %image, sigma_clip=2)
     image += 1
-    return image 
+    return image
 
 #######################################################################################################
 """
